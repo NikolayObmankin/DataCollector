@@ -1,3 +1,5 @@
+package parseData;
+
 import metroData.Line;
 import metroData.Station;
 
@@ -34,7 +36,7 @@ public class StationIndex {
         }
     }
 
-    public Line getLine(int number) {
+    public Line getLine(String number) {
         return number2line.get(number);
     }
 
@@ -47,7 +49,7 @@ public class StationIndex {
         return null;
     }
 
-    public Station getStation(String name, int lineNumber) {
+    public Station getStation(String name, String lineNumber) {
         Station query = new Station(name, getLine(lineNumber));
         Station station = stations.ceiling(query);
         return station.equals(query) ? station : null;

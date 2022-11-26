@@ -6,6 +6,7 @@ public class Station implements Comparable<Station>
     private String name;
     private String depth;
     private String openingDate;
+    private boolean isConnected;
 
     public Station(String name, Line line)
     {
@@ -13,9 +14,13 @@ public class Station implements Comparable<Station>
         this.line = line;
     }
 
-    public Station(String name, Line line, String depth) {
-        this(name, line);
+
+    public void setDepth(String depth) {
         this.depth = depth;
+    }
+
+    public void setOpeningDate(String openingDate) {
+        this.openingDate = openingDate;
     }
 
     public Line getLine()
@@ -45,8 +50,14 @@ public class Station implements Comparable<Station>
     }
 
     @Override
-    public String toString()
-    {
-        return name;
+    public String toString() {
+        return "Станция {" +
+                "" + line +
+                ", название станции: '" + name + '\'' +
+                ", глубина: '" + depth + '\'' +
+                ", дата открытия: '" + openingDate + '\'' +
+                ", наличие пересадки: " + isConnected +
+                '}';
     }
+
 }

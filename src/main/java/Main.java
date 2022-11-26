@@ -1,3 +1,4 @@
+import metroData.Line;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -28,11 +29,14 @@ public class Main {
 
 //        System.out.println("Введите путь к папке или файлу: ");
 //        String path = new Scanner(System.in).nextLine();
-//        ParserHTML.parseHTML(url);
-        File folder = new File(PATH);
-        FileFinder.searchFiles(folder);
-        ParserCSV.getOpeningDate();
-        ParserJSON.getDepthsStation();
+        ParserHTML.parseHTML(url);
+//        Line line1 = new Line("1", "A");
+//        Line line2 = new Line("2", "B");
+//        System.out.println(line1.compareTo(line2));
+//        File folder = new File(PATH);
+//        FileFinder.searchFiles(folder);
+//        ParserCSV.getOpeningDate();
+//        ParserJSON.getDepthsStation();
 //        System.exit(0);
     }
 }
