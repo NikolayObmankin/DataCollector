@@ -29,7 +29,7 @@ public class ParserHTML {
     //todo Подумать над типом возвращаемых данных и доступом
     public static void parseLine (Elements lineNumber, Elements lineName) {
         int i = 0;
-        Map<String, String> lineWithNumbers = new HashMap<String, String>();
+        Map<String, String> lineWithNumbers = new HashMap<>();
         for (Element line : lineNumber) {
             lineWithNumbers.put(line.attr("data-line"), lineName.get(i++).text());
         }
@@ -50,8 +50,14 @@ public class ParserHTML {
             line2stations.put(lineName.get(i).text(), stations);
         }
         //todo Для проверки значений, удалить поссле проверок.
-//        for (Map.Entry<String, ArrayList<String>> entry : line2stations.entrySet()) {
+        int count = 1;
+        for (Map.Entry<String, ArrayList<String>> entry : line2stations.entrySet()) {
 //            System.out.println(entry.getKey() + " - " + entry.getValue());
-//        }
+            for (String s : entry.getValue()) {
+                System.out.println(s);
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 }
