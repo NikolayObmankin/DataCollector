@@ -1,18 +1,16 @@
 package parseData;
 
-import java.io.File;
+import metroData.Station;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ParserCSV {
-    private static Map<String, String> openingDate = new HashMap<>();
     private static List<String> openingDateList = new ArrayList<>();
-    public static Map<String, String> getOpeningDate () {
+
+    public static void getOpeningDate() {
         List<String> pathCSV = FileFinder.getPathCSV();
         for (String path : pathCSV) {
             try {
@@ -21,19 +19,17 @@ public class ParserCSV {
                 ex.printStackTrace();
             }
         }
-        for (String statoion : openingDateList) {
-            String[] st = statoion.split(",");
+        TreeSet<Station> stations = StationIndex.stationIndex.getStationsSet();
+
+        for (String station : openingDateList) {
+            String[] st = station.split(",");
             if (st.length == 2 && !st[0].equals("name") && !st[1].equals("date")) {
-                openingDate.put(st[0], st[1]);
+                for (Station station1 : stations) {
+                    if (station1.getName().equalsIgnoreCase(st[0]) && station1.getOpeningDate() == null) {
+                        station1.setOpeningDate(st[1]);
+                    }
+                }
             }
         }
-        //todo Для проверки значений, удалить поссле проверок.
-        int count = 1;
-        for (Map.Entry<String, String> entry : openingDate.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue());
-            count++;
-        }
-        System.out.println(count);
-        return openingDate;
     }
 }

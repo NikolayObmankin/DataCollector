@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Line implements Comparable<Line>
 {
-    private String number;
-    private String name;
-    private List<Station> stations;
+    private final String number;
+    private final String name;
+    private final List<Station> stations;
 
     public Line(String number, String name)
     {
@@ -50,9 +50,9 @@ public class Line implements Comparable<Line>
 
     @Override
     public String toString() {
-        return "Линия {" +
-                "номер линии: '" + number + '\'' +
-                ", название линии '" + name + '\'' +
+        return "{" +
+                "Линия № '" + number +
+                "' - '" + name + '\'' +
                 '}';
     }
 }

@@ -10,7 +10,7 @@ public class StationIndex {
     private final Map<String, Line> number2line;
     private final TreeSet<Station> stations;
     private final Map<Station, TreeSet<Station>> connections;
-
+    public static StationIndex stationIndex;
     public StationIndex() {
         number2line = new HashMap<>();
         stations = new TreeSet<>();
@@ -58,5 +58,13 @@ public class StationIndex {
     public Set<Station> getConnectedStations(Station station) {
         return connections.containsKey(station) ?
                 connections.get(station) : new TreeSet<>();
+    }
+
+    public TreeSet<Station> getStationsSet() {
+        return stations;
+    }
+
+    public Map<String, Line> getNumber2line() {
+        return number2line;
     }
 }
