@@ -1,10 +1,16 @@
 package metroData;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Station implements Comparable<Station> {
     private final Line line;
+    @SerializedName("name")
     private final String name;
+    @SerializedName("depth")
     private Double depth;
+    @SerializedName("date")
     private String openingDate;
+    @SerializedName("hasConnected")
     private boolean isConnected;
 
     public Station(String name, Line line) {
@@ -56,16 +62,31 @@ public class Station implements Comparable<Station> {
 
     @Override
     public String toString() {
-        String print = line +
-                ", станция: '" + name + '\'' +
-                ", глубина: '" + depth + '\'' +
-                ", дата открытия: '" + openingDate + '\'' +
-                ", наличие пересадки: " + isConnected;
+        String print =
+                "name: '" + name + '\'' +
+                "line: '" + line + '\'' +
+                "date: '" + openingDate + '\'' +
+                "depth: '" + depth + '\'' +
+                "hasConnection: " + isConnected;
         if (openingDate == null) {
-            print = line +
-                    ", станция: '" + name + '\'' +
-                    ", глубина: '" + depth + '\'' +
-                    ", наличие пересадки: " + isConnected;
+            print =
+                "name: '" + name + '\'' +
+                "line: '" + line + '\'' +
+                "depth: '" + depth + '\'' +
+                "hasConnection: " + isConnected;
+        }
+        if (depth == null) {
+            print =
+                "name: '" + name + '\'' +
+                "line: '" + line + '\'' +
+                "date: '" + openingDate + '\'' +
+                "hasConnection: " + isConnected;
+        }
+        if (openingDate == null && depth == null) {
+            print =
+                "name: '" + name + '\'' +
+                "line: '" + line + '\'' +
+                "hasConnection: " + isConnected;
         }
         return print;
     }

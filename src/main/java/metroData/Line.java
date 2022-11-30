@@ -1,11 +1,15 @@
 package metroData;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Line implements Comparable<Line>
 {
+    @SerializedName("number")
     private final String number;
+    @SerializedName("name")
     private final String name;
     private final List<Station> stations;
 
